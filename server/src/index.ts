@@ -7,24 +7,23 @@ const port = 9000;
 
 app.use(bodyParser.json());
 
-// Testing types
-const one = 1;
-const two = 2;
-// const three: boolean = false;
-// const four: string = "one";
-// const five: null = null;
-// const six: undefined = undefined;
-// const seven: any = {};
-
-app.get('/', (_req, res) => res.send(`1 + 2 = ${one + two}`));
-
 // Add listings route
 app.get("/listings", (_req, res) => {
     res.send(listings);
   });
 
 // Add delete-listings route
-
+app.post("/delete-listing", (req, res) => {
+    const id: string = req.body.id;
+  
+    for (let i = 0; i < listings.length; i++) {
+      if (listings[i].id === id) {
+        return res.send(listings.splice(i, 1)[0]);
+      }
+    }
+  
+    return res.send("failed to deleted listing");
+  });
 
 app.listen(port);
 
