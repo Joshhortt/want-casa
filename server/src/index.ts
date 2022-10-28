@@ -1,4 +1,6 @@
 import express from "express";
+import { listings } from "./listings";
+
 const app = express();
 const port = 9000;
 
@@ -12,6 +14,15 @@ const two = 2;
 // const seven: any = {};
 
 app.get('/', (_req, res) => res.send(`1 + 2 = ${one + two}`));
+
+// Add listings route
+app.get("/listings", (_req, res) => {
+    res.send(listings);
+  });
+
+// Add delete-listings route
+
+
 app.listen(port);
 
 console.log(`[app] : http://localhost:${port}`);
