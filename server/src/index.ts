@@ -1,8 +1,11 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { listings } from "./listings";
 
 const app = express();
 const port = 9000;
+
+app.use(bodyParser.json());
 
 // Testing types
 const one = 1;
