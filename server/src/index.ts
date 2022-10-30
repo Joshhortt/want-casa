@@ -1,30 +1,15 @@
-import express from "express";
-import bodyParser from "body-parser";
-import { listings } from "./listings";
+import express from 'express'
+import { ApolloServer } from 'apollo-server-express'
+import { schema } from './graphql'
 
-const app = express();
-const port = 9000;
+const app = express()
+const port = 9000
 
-app.use(bodyParser.json());
-
-// Add listings route
-app.get("/listings", (_req, res) => {
-    res.send(listings);
-  });
-
-// Add delete-listings route
-app.post("/delete-listing", (req, res) => {
-    const id: string = req.body.id;
-  
-    for (let i = 0; i < listings.length; i++) {
-      if (listings[i].id === id) {
-        return res.send(listings.splice(i, 1)[0]);
-      }
+async function startApolloServer() { 
+    const server = new ApolloServer({ schema })
+    await server.start()
+    server.applyMiddleware({ app, path: '/api' })}startApolloServer()
+    app.listen(port, () => {
+        console.log(`[app]: listening at http://localhost:${port}`)
     }
-  
-    return res.send("failed to deleted listing");
-  });
-
-app.listen(port);
-
-console.log(`[app] : http://localhost:${port}`);
+    )
