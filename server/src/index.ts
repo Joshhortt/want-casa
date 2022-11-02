@@ -9,7 +9,11 @@ const port = 9000;
 async function startApolloServer() { 
     const server = new ApolloServer({ typeDefs, resolvers })
     await server.start()
-    server.applyMiddleware({ app, path: '/api' })}startApolloServer()
+    server.applyMiddleware({ app, path: '/api' })
+    }
+    
+    startApolloServer()
+
     app.listen(port);
     
         console.log(`[app]: http://localhost:${port}`)
