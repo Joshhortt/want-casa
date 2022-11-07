@@ -1,9 +1,19 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
+import { Database } from '../lib/types';
 
-const user = "user_1";
+const user = "user_001";
 const userPassword = "";
-const cluster = "cluster0.a8suro4";
+const cluster = "";
 
-export const connectDatabase = () =>  {};
+const uri = `mongodb+srv://${user}:${userPassword}@${cluster}.mongodb.net/?retryWrites=true&w=majority`;
 
-const url = `mongodb+srv://${user}:${userPassword}@${cluster}.mongodb.net/?retryWrites=true&w=majority`;
+export const connectDatabase = async (): Promise<Database> => {
+    
+    const client = await MongoClient.connect(uri);
+        
+    const db = client.db("main");
+
+    return {
+      listings: db.collection("test_listings")
+  };  
+};
