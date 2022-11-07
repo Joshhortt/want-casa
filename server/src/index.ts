@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import express, { Application } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { connectDatabase } from "./database";
