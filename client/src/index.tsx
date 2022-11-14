@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom'; // Add this instead..
+import { Listings } from "./sections";
 // import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
@@ -19,6 +20,5 @@ import reportWebVitals from './reportWebVitals';
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-render(<div>Hello Want Casa!</div>, document.getElementById("root"));
-
+render(<Listings />, document.getElementById("root"));
 reportWebVitals();
