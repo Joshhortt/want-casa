@@ -20,5 +20,9 @@ import reportWebVitals from './reportWebVitals';
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-render(<Listings />, document.getElementById("root"));
+render(
+    <Listings title="TinyHouse Listings" />,
+    document.getElementById("root")
+  );
+
 reportWebVitals();
